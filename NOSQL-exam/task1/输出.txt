@@ -1,0 +1,74 @@
+====【第1问】查询张老师、状态OPEN的课程，统计章节数量 ====
+{
+        "_id" : "COURSE-12403030212-01",
+        "title" : "NoSQL数据库",
+        "chapterCount" : 2
+}
+====【第2问】局部更新CH02标题 ====
+{
+        "acknowledged" : true,
+        "matchedCount" : 1,
+        "modifiedCount" : 1,
+        "upsertedCount" : 0
+}
+{
+        "_id" : "COURSE-12403030212-01",
+        "title" : "NoSQL数据库",
+        "teacher" : "张老师",
+        "status" : "OPEN",
+        "chapters" : [
+                {
+                        "chapterId" : "CH01",
+                        "title" : "MongoDB基础",
+                        "hours" : 2
+                },
+                {
+                        "chapterId" : "CH02",
+                        "title" : "Redis基础与应用-12",
+                        "hours" : 2
+                }
+        ]
+}
+====【第3问】第一次新增CH03 ====
+{
+        "acknowledged" : true,
+        "matchedCount" : 1,
+        "modifiedCount" : 1,
+        "upsertedCount" : 0
+}
+====【第3问】第二次重复执行新增CH03（不会新增） ====
+{
+        "acknowledged" : true,
+        "matchedCount" : 1,
+        "modifiedCount" : 0,
+        "upsertedCount" : 0
+}
+{
+        "_id" : "COURSE-12403030212-01",
+        "title" : "NoSQL数据库",
+        "teacher" : "张老师",
+        "status" : "OPEN",
+        "chapters" : [
+                {
+                        "chapterId" : "CH01",
+                        "title" : "MongoDB基础",
+                        "hours" : 2
+                },
+                {
+                        "chapterId" : "CH02",
+                        "title" : "Redis基础与应用‑12",
+                        "hours" : 2
+                },
+                {
+                        "chapterId" : "CH03",
+                        "title" : "Redis高级操作",
+                        "hours" : 2
+                }
+        ]
+}
+====【第4问】验证输出 ====
+(1) 修改后CH02的标题： Redis基础与应用‑12
+(2) 两次新增后CH03的数量： 1
+(3) 最终章节总数： 3
+(4) teacher字段： 张老师
+    status字段： OPEN

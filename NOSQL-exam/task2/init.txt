@@ -1,0 +1,12 @@
+const SID = "12403030212";
+const examDB = db.getSiblingDB("exam_"+SID);
+examDB.inventory.deleteMany({});
+examDB.orders.deleteMany({});
+
+// 库存：商品，初始库存10
+examDB.inventory.insertOne({
+    _id: "goods001",
+    name: "测试商品",
+    stock: 10
+});
+print("=====第二题初始化完成=====");
